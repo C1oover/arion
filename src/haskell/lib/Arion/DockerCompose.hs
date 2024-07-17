@@ -15,9 +15,9 @@ run args = do
   let fileArgs = files args >>= \f -> ["--file", f]
       allArgs  = fileArgs ++ map toS (otherArgs args)
 
-      procSpec = proc "docker-compose" allArgs
+      procSpec = proc "podman-compose" allArgs
 
-  -- hPutStrLn stderr ("Running docker-compose with " <> show allArgs :: Text)
+  -- hPutStrLn stderr ("Running podman-compose with " <> show allArgs :: Text)
 
   withCreateProcess procSpec $ \_in _out _err procHandle -> do
 
@@ -27,4 +27,4 @@ run args = do
       ExitSuccess -> pass
       ExitFailure 1 -> exitFailure
       ExitFailure {} -> do
-        throwIO $ FatalError $ "docker-compose failed with " <> show exitCode
+        throwIO $ FatalError $ "podman-compose failed with " <> show exitCode

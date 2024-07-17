@@ -43,7 +43,7 @@ let
         ];
         environment.ARION_PREBUILT = config.settings.out.dockerComposeYaml;
         script = ''
-          echo 1>&2 "docker compose file: $ARION_PREBUILT"
+          echo 1>&2 "podman compose file: $ARION_PREBUILT"
           arion --prebuilt-file "$ARION_PREBUILT" up
         '';
       };

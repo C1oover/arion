@@ -1,5 +1,5 @@
 {
-  description = "Arion - use Docker Compose via Nix";
+  description = "Arion - use Podman Compose via Nix";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -60,7 +60,7 @@
           };
           devShells.default = config.devShells.haskell-package.overrideAttrs (o: {
             nativeBuildInputs = o.nativeBuildInputs or [ ] ++ [
-              pkgs.docker-compose
+              pkgs.podman-compose
               pkgs.nixpkgs-fmt
               config.haskellProjects.haskell-package.haskellPackages.releaser
             ];
