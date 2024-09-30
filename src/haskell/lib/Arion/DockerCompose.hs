@@ -15,7 +15,7 @@ run args = do
   let fileArgs = files args >>= \f -> ["--file", f]
       allArgs  = fileArgs ++ map toS (otherArgs args)
 
-      procSpec = proc "podman-compose" allArgs
+      procSpec = proc "podman compose" allArgs
 
   -- hPutStrLn stderr ("Running podman-compose with " <> show allArgs :: Text)
 
